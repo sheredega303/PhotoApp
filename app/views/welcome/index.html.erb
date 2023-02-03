@@ -1,2 +1,52 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<% if current_user %>
+  <h3>Welcome: <%= current_user.email %></h3>
+<% else %>
+  <div class="jumbotron">
+    <h2>Welcome to the Photo Management App!</h2>
+    <p class="lead">
+      You'll love managing your Photos with our application. Sign up!
+    </p>
+  </div>
+  <br>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-lg col-lg-offset plan">
+        <h2>Premium Plan</h2>
+        <div class="features">
+          <ul>
+            <li>Unlimited Image Uploads</li>
+            <li>Responsive design</li>
+            <li>Access anywhere</li>
+          </ul>
+        </div>
+        <strong>Price: $10</strong>
+        <br>
+        <br>
+        <p>
+          <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary sign-up' %>
+        </p>
+      </div>
+      <div class="col-lg plan">
+        <h2>Amaze Plan</h2>
+        <div class="price pull-right">
+        </div>
+        <div class="features">
+          <ul>
+            <li>Unlimited Image Uploads</li>
+            <li>Responsive design</li>
+            <li>Access anywhere</li>
+            <li>Unlimited projects</li>
+          </ul>
+        </div>
+        <strong>Price: $20</strong>
+        <br>
+        <br>
+        <p>
+          <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary sign-up' %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+<% end %>

@@ -25,6 +25,7 @@ gem 'devise-bootstrap-views'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'sendgrid-ruby'
+gem "font-awesome-rails"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
