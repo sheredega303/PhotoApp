@@ -22,6 +22,45 @@
     <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control' %>
   </div>
 
+  <%= fields_for( :payment ) do |p| %>
+    <div class="form-group">
+      <%= p.label :plan %>
+      <br>
+      <%= p.radio_button :plan, 'Premium' %> Premium Plan - 10$<br />
+      <%= p.radio_button :plan, 'Amaze' %> Amaze Plan - 20$<br />
+    </div>
+
+    <div class="row col-md-12">
+      <div class="form-group col-md-4">
+        <%= p.label :card_number, "Card Number"%>
+        <%= p.text_field :card_number, class: "form-control" %>
+      </div>
+
+      <div class="form-group col-md-2">
+        <%= p.label :card_cvc, "Card CVC" %>
+        <%= p.text_field :card_cvc, class: "form-control" %>
+      </div>
+
+      <div class="form-group col-md-6">
+        <div class="col-md-12">
+          <%= p.label :card_expires, "Card Expires"%>
+        </div>
+
+        <div class="col-md-3">
+          <%= p.select :card_expires_month, options_for_select(Payment.month_options),
+                       { include_blank: 'Month' },
+                       class: "form-control" %>
+        </div>
+
+        <div class="col-md-3">
+          <%= p.select :card_expires_year, options_for_select(Payment.year_options.push),
+                       { include_blank: 'Year' },
+                       class: "form-control"%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <div class="form-group">
     <%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
   </div>
