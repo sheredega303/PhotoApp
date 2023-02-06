@@ -26,6 +26,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'sendgrid-ruby'
 gem "font-awesome-rails"
+gem "stripe"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
