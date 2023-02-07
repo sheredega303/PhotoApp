@@ -7,14 +7,15 @@ class RegistrationsController < Devise::RegistrationsController
       resource.save
       yield resource if block_given?
       if resource.persisted?
-        @payment = Payment.new({
-                                 email: params["user"]["email"],
-                                 token: token_params,
-                                 user_id: resource.id })
         begin
+          @payment = Payment.new({
+                                   email: params["user"]["email"],
+                                   token: token_params,
+                                   user_id: resource.id })
           @payment.process_payment
           @payment.save
         rescue Exception => e
+          flash[:alert] = e.message
           puts e.message
           resource.destroy
           puts "Payment failed"
