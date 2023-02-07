@@ -1,0 +1,36 @@
+<%= form_with(model: image) do |form| %>
+  <% if image.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+      <ul>
+        <% image.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :picture, style: "display: block" %>
+    <%= form.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+    $('#image_picture').bind('change', function() {
+        let size_in_megabytes = this.files[0].size/1024/1024;
+        if (size_in_megabytes > 5) {
+            alert("Maximum file size is 5MB");
+        }
+    });
+</script>
